@@ -22,24 +22,24 @@ const Hero: FC<THeroProps> = ({
       <div className="flex flex-col items-center justify-center py-8 md:py-12 lg:pt-8 lg:pb-16">
         <div className="landing flex flex-col items-center mb-8 md:mb-12">
           <h1 className="text-4xl font-extrabold text-center lg:text-7xl mb-6">
-            Say Goodbye to <br />
+            Diga Adeus a<br />
             <span
               style={{
-                backgroundImage: 'linear-gradient(to right, #9867F0, #ED4E50)',
+                backgroundImage: 'linear-gradient(to right,rgb(65, 160, 255), #ED4E50)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              Hours of Research
+              Horas de Research
             </span>
           </h1>
           <h2 className="text-xl font-light text-center px-4 mb-10 md:mb-12 text-gray-300">
-            Say Hello to GPT Researcher, your AI mate for rapid insights and comprehensive research
+            Diga Olá ao Buildinho Researcher, seu companheiro da ACE para insights rápidos e pesquisas completas
           </h2>
         </div>
 
         {/* Input section */}
-        <div className="w-full max-w-[708px] pb-8 md:pb-10 px-4">
+        <div className="w-full max-w-[708px] pb-6">
           <InputArea
             promptValue={promptValue}
             setPromptValue={setPromptValue}
@@ -82,17 +82,17 @@ type suggestionType = {
 const suggestions: suggestionType[] = [
   {
     id: 1,
-    name: "Stock analysis on ",
+    name: "Análise da ação ",
     icon: "/img/stock2.svg",
   },
   {
     id: 2,
-    name: "Help me plan an adventure to ",
+    name: "Me ajude a planejar uma viagem para ",
     icon: "/img/hiker.svg",
   },
   {
     id: 3,
-    name: "What are the latest news on ",
+    name: "Quais as últimas notícias sobre ",
     icon: "/img/news.svg",
   },
 ];
