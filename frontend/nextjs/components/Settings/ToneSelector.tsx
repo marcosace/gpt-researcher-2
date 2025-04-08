@@ -7,23 +7,32 @@ interface ToneSelectorProps {
 export default function ToneSelector({ tone, onToneChange }: ToneSelectorProps) {
   return (
     <div className="form-group">
-      <label htmlFor="tone" className="agent_question">Tone </label>
-      <select name="tone" id="tone" value={tone} onChange={onToneChange} className="form-control" required>
-        <option value="Objective">Objective - Impartial and unbiased presentation of facts and findings</option>
-        <option value="Formal">Formal - Adheres to academic standards with sophisticated language and structure</option>
-        <option value="Analytical">Analytical - Critical evaluation and detailed examination of data and theories</option>
-        <option value="Persuasive">Persuasive - Convincing the audience of a particular viewpoint or argument</option>
-        <option value="Informative">Informative - Providing clear and comprehensive information on a topic</option>
-        <option value="Explanatory">Explanatory - Clarifying complex concepts and processes</option>
-        <option value="Descriptive">Descriptive - Detailed depiction of phenomena, experiments, or case studies</option>
-        <option value="Critical">Critical - Judging the validity and relevance of the research and its conclusions</option>
-        <option value="Comparative">Comparative - Juxtaposing different theories, data, or methods to highlight differences and similarities</option>
-        <option value="Speculative">Speculative - Exploring hypotheses and potential implications or future research directions</option>
-        <option value="Reflective">Reflective - Considering the research process and personal insights or experiences</option>
-        <option value="Narrative">Narrative - Telling a story to illustrate research findings or methodologies</option>
-        <option value="Humorous">Humorous - Light-hearted and engaging, usually to make the content more relatable</option>
-        <option value="Optimistic">Optimistic - Highlighting positive findings and potential benefits</option>
-        <option value="Pessimistic">Pessimistic - Focusing on limitations, challenges, or negative outcomes</option>
+      <label htmlFor="tone" className="agent_question">Entonação </label>
+      <select 
+        name="tone" 
+        id="tone" 
+        value={tone} 
+        onChange={onToneChange} 
+        className="form-control-static"
+        required
+      >
+        <option value="Objective">Objetivo - Apresentação imparcial e sem viés de fatos e descobertas</option>
+        <option value="Formal">Formal - Segue padrões acadêmicos com linguagem e estrutura sofisticadas</option>
+        <option value="Analytical">Analítico - Avaliação crítica e exame detalhado de dados e teorias</option>
+        <option value="Persuasive">Persuasivo - Convencendo o público de um ponto de vista ou argumento específico</option>
+        <option value="Informative">Informativo - Fornecendo informações claras e abrangentes sobre um tópico</option>
+        <option value="Explanatory">Explicativo - Esclarecendo conceitos e processos complexos</option>
+        <option value="Descriptive">Descritivo - Descrição detalhada de fenômenos, experimentos ou estudos de caso</option>
+        <option value="Critical">Crítico - Julgando a validade e relevância da pesquisa e suas conclusões</option>
+        <option value="Comparative">Comparativo - Justapondo diferentes teorias, dados ou métodos para destacar diferenças e semelhanças</option>
+        <option value="Speculative">Especulativo - Explorando hipóteses e implicações potenciais ou direções futuras de pesquisa</option>
+        <option value="Reflective">Reflexivo - Considerando o processo de pesquisa e percepções ou experiências pessoais</option>
+        <option value="Narrative">Narrativo - Contando uma história para ilustrar descobertas ou metodologias de pesquisa</option>
+        <option value="Humorous">Humorístico - Leve e envolvente, geralmente para tornar o conteúdo mais relacionável</option>
+        <option value="Optimistic">Otimista - Destacando descobertas positivas e benefícios potenciais</option>
+        <option value="Pessimistic">Pessimista - Focando em limitações, desafios ou resultados negativos</option>
+        <option value="Simple">Simples - Escrito para leitores jovens, usando vocabulário básico e explicações claras</option>
+        <option value="Casual">Casual - Estilo conversacional e descontraído para leitura fácil e cotidiana</option>
       </select>
     </div>
   );

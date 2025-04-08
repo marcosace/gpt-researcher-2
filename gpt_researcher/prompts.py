@@ -92,6 +92,7 @@ You should strive to write the report as long as you can using all relevant and 
 Please follow all of the following guidelines in your report:
 - You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
 - You MUST write the report with markdown syntax and {report_format} format.
+- Use markdown tables when presenting structured data or comparisons to enhance readability.
 - You MUST prioritize the relevance, reliability, and significance of the sources you use. Choose trusted sources over less reliable ones.
 - You must also prioritize new articles over older articles if the source can be trusted.
 - Use in-text citation references in {report_format} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
@@ -170,6 +171,7 @@ def generate_resource_report_prompt(
         " explaining how each source can contribute to finding answers to the research question.\n"
         "Focus on the relevance, reliability, and significance of each source.\n"
         "Ensure that the report is well-structured, informative, in-depth, and follows Markdown syntax.\n"
+        "Use markdown tables and other formatting features when appropriate to organize and present information clearly.\n"
         "Include relevant facts, figures, and numbers whenever available.\n"
         f"The report should have a minimum length of {total_words} words.\n"
         f"You MUST write the report in the following language: {language}.\n"
@@ -200,6 +202,7 @@ def generate_outline_report_prompt(
         " for the research report, including the main sections, subsections, and key points to be covered."
         f" The research report should be detailed, informative, in-depth, and a minimum of {total_words} words."
         " Use appropriate Markdown syntax to format the outline and ensure readability."
+        " Consider using markdown tables and other formatting features where they would enhance the presentation of information."
     )
 
 
@@ -255,6 +258,7 @@ The report should:
 5. Be well-structured with clear sections and subsections
 6. Have a minimum length of {total_words} words
 7. Follow {report_format} format with markdown syntax
+8. Use markdown tables, lists and other formatting features when presenting comparative data, statistics, or structured information
 
 Additional requirements:
 - Prioritize insights that emerged from deeper levels of research
@@ -367,6 +371,7 @@ You must limit the number of subsections to a maximum of {max_subsections}.
 Content Focus:
 - The report should focus on answering the question, be well-structured, informative, in-depth, and include facts and numbers if available.
 - Use markdown syntax and follow the {report_format.upper()} format.
+- When presenting data, comparisons, or structured information, use markdown tables to enhance readability.
 
 IMPORTANT:Content and Sections Uniqueness:
 - This part of the instructions is crucial to ensure the content is unique and does not overlap with existing reports.
@@ -393,7 +398,7 @@ IMPORTANT:Content and Sections Uniqueness:
 
     ### Section Header
     
-    This is a sample text. ([url website](url))
+    This is a sample text ([in-text citation](url)).
 
 - Use H2 for the main subtopic header (##) and H3 for subsections (###).
 - Use smaller Markdown headers (e.g., H2 or H3) for content structure, avoiding the largest header (H1) as it will be used for the larger report's heading.
@@ -411,7 +416,7 @@ Assume the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if
 - You MUST write the report in the following language: {language}.
 - The focus MUST be on the main topic! You MUST Leave out any information un-related to it!
 - Must NOT have any introduction, conclusion, summary or reference section.
-- You MUST include hyperlinks with markdown syntax ([url website](url)) related to the sentences wherever necessary.
+- You MUST use in-text citation references in {report_format.upper()} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
 - You MUST mention the difference between the existing content and the new content in the report if you are adding the similar or same subsections wherever necessary.
 - The report should have a minimum length of {total_words} words.
 - Use an {tone.value} tone throughout the report.
@@ -454,19 +459,19 @@ Provide the draft headers in a list format using markdown syntax, for example:
 """
 
 
-def generate_report_introduction(question: str, research_summary: str = "", language: str = "english") -> str:
+def generate_report_introduction(question: str, research_summary: str = "", language: str = "english", report_format: str = "apa") -> str:
     return f"""{research_summary}\n 
 Using the above latest information, Prepare a detailed report introduction on the topic -- {question}.
 - The introduction should be succinct, well-structured, informative with markdown syntax.
 - As this introduction will be part of a larger report, do NOT include any other sections, which are generally present in a report.
 - The introduction should be preceded by an H1 heading with a suitable topic for the entire report.
-- You must include hyperlinks with markdown syntax ([url website](url)) related to the sentences wherever necessary.
+- You must use in-text citation references in {report_format.upper()} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
 Assume that the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
 - The output must be in {language} language.
 """
 
 
-def generate_report_conclusion(query: str, report_content: str, language: str = "english") -> str:
+def generate_report_conclusion(query: str, report_content: str, language: str = "english", report_format: str = "apa") -> str:
     """
     Generate a concise conclusion summarizing the main findings and implications of a research report.
 
@@ -492,7 +497,7 @@ def generate_report_conclusion(query: str, report_content: str, language: str = 
     4. Be approximately 2-3 paragraphs long
     
     If there is no "## Conclusion" section title written at the end of the report, please add it to the top of your conclusion. 
-    You must include hyperlinks with markdown syntax ([url website](url)) related to the sentences wherever necessary.
+    You must use in-text citation references in {report_format.upper()} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
 
     IMPORTANT: The entire conclusion MUST be written in {language} language.
 
