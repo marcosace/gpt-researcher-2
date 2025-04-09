@@ -3,6 +3,9 @@ import { Lexend } from "next/font/google";
 import PlausibleProvider from "next-plausible";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import "./globals.css";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 
 const inter = Lexend({ subsets: ["latin"] });
 
@@ -44,17 +47,19 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html className="gptr-root" lang="en">
-      <head>
-        <PlausibleProvider domain="localhost:3000" />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
-      </head>
-      <body
-        className={`app-container ${inter.className} flex min-h-screen flex-col justify-between`}
-        suppressHydrationWarning
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html className="gptr-root" lang="en">
+        <head>
+          <PlausibleProvider domain="localhost:3000" />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
+        </head>
+        <body
+          className={`app-container ${inter.className} flex min-h-screen flex-col justify-between`}
+          suppressHydrationWarning
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

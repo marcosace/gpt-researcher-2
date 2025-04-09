@@ -1,5 +1,12 @@
 import React from 'react';
 import Image from "next/image";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
 
 interface HeaderProps {
   loading?: boolean;      // Indicates if research is currently in progress
@@ -16,6 +23,15 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
       <div className="absolute inset-0 backdrop-blur-sm bg-transparent"></div>
       
       {/* Header container */}
+      <div className="flex justify-end items-center p-4 gap-4 h-16">
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
       <div className="container relative h-[60px] px-4 lg:h-[80px] lg:px-0 pt-4 pb-4">
         <div className="flex flex-col items-center">
           {/* Logo/Home link */}
@@ -28,7 +44,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
               className="lg:h-16 lg:w-16"
             />
           </a>
-          
+
           {/* Action buttons container */}
           <div className="flex gap-2 mt-2 transition-all duration-300 ease-in-out">
             {/* Stop button - shown only during active research */}
